@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function index(Request $request): JsonResponse
     {
 
-        $order = Order::select(['id', 'invoice_id', 'customer_name']);
+        $order = Order::select(['id', 'invoice_id', 'customer_name'])->where('status', '=', 1);
 
         return Datatables::of($order)->make();
     }
